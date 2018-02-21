@@ -1,16 +1,20 @@
 package net.avdw.anomoly.detection;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import org.pmw.tinylog.Logger;
 
-public abstract class AConsumer<T> extends AThread
+public abstract class AFactory<I, O> extends AThread
 {
 
-    private final BlockingQueue<T> input;
+    private final BlockingQueue<I> input;
+    private final List<BlockingQueue<O>> outputs;
 
-    public AConsumer(BlockingQueue<T> input)
+    public AFactory(BlockingQueue<I> input, BlockingQueue<O>... outputs)
     {
         this.input = input;
+        this.outputs = Arrays.asList(outputs);
     }
 
     @Override
@@ -24,6 +28,12 @@ public abstract class AConsumer<T> extends AThread
             try
             {
                 consume(input.take());
+                
+                O item = produce();
+                for (BlockingQueue<O> output : outputs)
+                {
+                    output.put(item);
+                }
             } catch (InterruptedException ex)
             {
                 Logger.warn(ex);
@@ -32,5 +42,7 @@ public abstract class AConsumer<T> extends AThread
         Logger.info(String.format("stopped"));
     }
 
-    abstract void consume(T item);
+    abstract void consume(I item);
+
+    abstract O produce();
 }

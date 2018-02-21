@@ -4,18 +4,23 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import org.pmw.tinylog.Logger;
 
-public class RandomProducer extends AProducer {
+public class RandomSupplier extends ASupplier<Double>
+{
 
-    public RandomProducer(BlockingQueue output) {
+    public RandomSupplier(BlockingQueue output)
+    {
         super(output);
     }
 
     @Override
-    Double produce() {
+    Double produce()
+    {
         Logger.debug("");
-        try {
+        try
+        {
             TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException ex)
+        {
             Logger.warn(ex);
         }
         return Math.random();
