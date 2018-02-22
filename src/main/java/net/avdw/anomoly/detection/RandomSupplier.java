@@ -1,5 +1,6 @@
 package net.avdw.anomoly.detection;
 
+import net.avdw.economy.api.ASupplier;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import org.pmw.tinylog.Logger;
@@ -13,16 +14,17 @@ public class RandomSupplier extends ASupplier<Double>
     }
 
     @Override
-    Double produce()
+    public Double produce()
     {
         Logger.debug("");
         try
         {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException ex)
         {
             Logger.warn(ex);
         }
+
         return Math.random();
     }
 

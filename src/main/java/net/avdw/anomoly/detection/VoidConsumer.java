@@ -1,20 +1,21 @@
 package net.avdw.anomoly.detection;
 
-import java.util.concurrent.BlockingQueue;
+import java.util.List;
+import net.avdw.economy.api.AConsumer;
 import org.pmw.tinylog.Logger;
 
-class VoidConsumer extends AConsumer
+public class VoidConsumer extends AConsumer
 {
 
-    public VoidConsumer(BlockingQueue input)
+    public VoidConsumer(List inputs)
     {
-        super(input);
+        super(inputs);
     }
 
     @Override
-    void consume(Object item)
+    public void consume(Object good)
     {
-        Logger.debug(String.format("voiding %s", item));
+        Logger.debug(String.format("voiding good: %s", good.getClass().getSimpleName()));
     }
 
 }

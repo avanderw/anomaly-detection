@@ -1,6 +1,8 @@
-package net.avdw.anomoly.detection.nelson;
+package net.avdw.anomoly.detection.nelsonrule;
 
+import net.avdw.anomoly.detection.nelsonrule.Rule8;
 import java.util.Arrays;
+import net.avdw.anomoly.detection.nelsonrule.NelsonRule;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,7 +24,7 @@ public class Rule8Test
     public void testCompute()
     {
         DescriptiveStatistics stats = new DescriptiveStatistics();
-        IRule rule = new Rule8();
+        NelsonRule.IRule rule = new Rule8();
         for (Double value : Arrays.asList(13., 14., 13., 14., 13., 15., 12., 14., 13., 20., 19., 20., 19., 20., 19., 20., 19., 20.))
         {
             stats.addValue(value);

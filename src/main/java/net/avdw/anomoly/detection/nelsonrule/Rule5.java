@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelson;
+package net.avdw.anomoly.detection.nelsonrule;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * medium tendency for samples to be mediumly out of control. The side of the
  * mean for the third point is unspecified.
  */
-public class Rule5 implements IRule
+public class Rule5 implements NelsonRule.IRule
 {
 
     Deque<Double> previous;
@@ -44,6 +44,12 @@ public class Rule5 implements IRule
         }
 
         return countHigh >= 2 || countLow >= 2;
+    }
+
+    @Override
+    public String description()
+    {
+        return "Two (or three) out of three points in a row are more than 2 standard deviations from the mean in the same direction. Problem indicated: There is a medium tendency for samples to be mediumly out of control.";
     }
 
 }

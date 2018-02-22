@@ -1,6 +1,8 @@
-package net.avdw.anomoly.detection.nelson;
+package net.avdw.anomoly.detection.nelsonrule;
 
+import net.avdw.anomoly.detection.nelsonrule.Rule1;
 import java.util.Arrays;
+import net.avdw.anomoly.detection.nelsonrule.NelsonRule;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,7 +24,7 @@ public class Rule1Test
     public void testLowerBound()
     {
         DescriptiveStatistics stats = new DescriptiveStatistics();
-        IRule rule = new Rule1();
+        NelsonRule.IRule rule = new Rule1();
         for (Double value : Arrays.asList(13., 18., 13., 14., 13., 16., 14., 21., 16., 13., 18., 13., 14., 13., 16., 14., 21., 13.))
         {
             stats.addValue(value);
@@ -36,7 +38,7 @@ public class Rule1Test
     public void testUpperBound()
     {
         DescriptiveStatistics stats = new DescriptiveStatistics();
-        IRule rule = new Rule1();
+        NelsonRule.IRule rule = new Rule1();
         for (Double value : Arrays.asList(13., 18., 13., 14., 13., 16., 14., 21., 16., 13., 18., 13., 14., 13., 16., 14., 21., 13.))
         {
             stats.addValue(value);
@@ -50,7 +52,7 @@ public class Rule1Test
     public void testInRange()
     {
         DescriptiveStatistics stats = new DescriptiveStatistics();
-        IRule rule = new Rule1();
+        NelsonRule.IRule rule = new Rule1();
         for (Double value : Arrays.asList(29., 18., 13., 14., 13., 16., 14., 21., 16., 13., 18., 13., 14., 13., 16., 14., 21., 13.))
         {
             stats.addValue(value);

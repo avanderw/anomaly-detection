@@ -1,26 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package net.avdw.anomoly.detection.nelson;
+package net.avdw.anomoly.detection.nelsonrule;
 
+import net.avdw.anomoly.detection.nelsonrule.Rule6;
 import java.util.Arrays;
+import net.avdw.anomoly.detection.nelsonrule.NelsonRule;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
-import org.pmw.tinylog.Logger;
 
-/**
- *
- * @author CP318674
- */
-public class Rule5Test
+public class Rule6Test
 {
 
-    public Rule5Test()
+    public Rule6Test()
     {
         Configurator.currentConfig()
                 .formatPattern("{date:yyyy-MM-dd HH:mm:ss} {method}(): {message}")
@@ -32,17 +24,19 @@ public class Rule5Test
     public void testCompute()
     {
         DescriptiveStatistics stats = new DescriptiveStatistics();
-        IRule rule = new Rule5();
+        NelsonRule.IRule rule = new Rule6();
         for (Double value : Arrays.asList(13., 14., 13., 14., 13., 15., 12., 14., 13., 20., 19., 20., 19., 20., 19., 20., 19., 20.))
         {
             stats.addValue(value);
             rule.compute(stats.getMean(), stats.getStandardDeviation(), value);
         }
 
-        rule.compute(stats.getMean(), stats.getStandardDeviation(), 32.5);
-        assertTrue(rule.compute(stats.getMean(), stats.getStandardDeviation(), 32.5));
-        assertTrue(rule.compute(stats.getMean(), stats.getStandardDeviation(), 1.5));
-        assertFalse(rule.compute(stats.getMean(), stats.getStandardDeviation(), 16.5));
+        assertFalse(rule.compute(stats.getMean(), stats.getStandardDeviation(), 22.5));
+        rule.compute(stats.getMean(), stats.getStandardDeviation(), 22.5);
+        rule.compute(stats.getMean(), stats.getStandardDeviation(), 22.5);
+        rule.compute(stats.getMean(), stats.getStandardDeviation(), 22.5);
+        assertTrue(rule.compute(stats.getMean(), stats.getStandardDeviation(), 11.));
+        assertFalse(rule.compute(stats.getMean(), stats.getStandardDeviation(), 9.));
     }
 
 }

@@ -1,18 +1,24 @@
 package net.avdw.anomoly.detection;
 
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
+import net.avdw.economy.api.AConsumer;
+import net.avdw.economy.api.Container;
+import org.pmw.tinylog.Logger;
 
-public class NelsonRuleConsumer extends AConsumer {
+public class NelsonRuleConsumer extends AConsumer<NelsonRuleGood> {
 
-    public NelsonRuleConsumer(BlockingQueue input)
+    public NelsonRuleConsumer(List<BlockingQueue<Container<NelsonRuleGood>>> inputs)
     {
-        super(input);
+        super(inputs);
     }
 
     @Override
-    void consume(Object item)
+    public void consume(NelsonRuleGood good)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (good.failed) {
+            Logger.warn(String.format("failed Nelson %s: %s", new Object[]{good.rule, good.description}));
+        }
     }
 
 }

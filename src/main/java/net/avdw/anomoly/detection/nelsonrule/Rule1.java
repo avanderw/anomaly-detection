@@ -1,13 +1,12 @@
-package net.avdw.anomoly.detection.nelson;
-
-import org.pmw.tinylog.Logger;
+package net.avdw.anomoly.detection.nelsonrule;
 
 /**
  * One point is more than 3 standard deviations from the mean. Problem
  * indicated: One sample is grossly out of control.
  */
-public class Rule1 implements IRule
+public class Rule1 implements NelsonRule.IRule
 {
+
     @Override
     public Boolean compute(Double mean, Double stddev, Double observation)
     {
@@ -16,5 +15,11 @@ public class Rule1 implements IRule
         Double lowerBound = mean - threeStdDev;
 
         return observation > upperBound || observation < lowerBound;
+    }
+
+    @Override
+    public String description()
+    {
+        return "One point is more than 3 standard deviations from the mean. Problem indicated: One sample is grossly out of control.";
     }
 }

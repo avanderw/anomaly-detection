@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelson;
+package net.avdw.anomoly.detection.nelsonrule;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * tendency for samples to be slightly out of control. The side of the mean for
  * the fifth point is unspecified.
  */
-public class Rule6 implements IRule
+public class Rule6 implements NelsonRule.IRule
 {
 
     Deque<Double> previous;
@@ -43,6 +43,12 @@ public class Rule6 implements IRule
         }
 
         return countHigh >= 4 || countLow >= 4;
+    }
+
+    @Override
+    public String description()
+    {
+        return "Four (or five) out of five points in a row are more than 1 standard deviation from the mean in the same direction. Problem indicated: There is a strong tendency for samples to be slightly out of control.";
     }
 
 }

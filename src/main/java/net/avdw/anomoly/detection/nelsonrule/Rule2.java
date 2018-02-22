@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelson;
+package net.avdw.anomoly.detection.nelsonrule;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Nine (or more) points in a row are on the same side of the mean. Problem
  * indicated: Some prolonged bias exists.
  */
-public class Rule2 implements IRule
+public class Rule2 implements NelsonRule.IRule
 {
 
     Deque<Double> previous;
@@ -29,6 +29,12 @@ public class Rule2 implements IRule
 
         Long count = previous.stream().filter((item) -> item > mean).count();
         return (count == 0 && previous.size() == 9) || count == 9;
+    }
+
+    @Override
+    public String description()
+    {
+        return "Nine (or more) points in a row are on the same side of the mean. Problem indicated: Some prolonged bias exists.";
     }
 
 }

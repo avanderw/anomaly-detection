@@ -1,8 +1,14 @@
 package net.avdw.anomoly.detection;
 
+import net.avdw.economy.api.AConsumer;
+import net.avdw.economy.api.AFactory;
+import net.avdw.economy.api.ASupplier;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import net.avdw.anomoly.detection.nelsonrule.NelsonRule;
+import net.avdw.economy.api.Container;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
 
@@ -19,18 +25,37 @@ public class Detection
     {
         Configurator.currentConfig()
                 .formatPattern("{date:yyyy-MM-dd HH:mm:ss} [{thread}] {class}.{method}() {level}: {message}")
-                .level(Level.TRACE)
+                .level(Level.INFO)
                 .activate();
 
-        BlockingQueue<Double> randomQueue = new LinkedBlockingQueue();
-        BlockingQueue<DescriptiveStatistics> statisticQueue = new LinkedBlockingQueue();
+        BlockingQueue<Container<Double>> producerQ = new LinkedBlockingQueue();
+        ASupplier producer = new RandomSupplier(producerQ);
 
-        ASupplier producer = new RandomSupplier(randomQueue);
-        AFactory factory = new DoubleStatisticFactory(randomQueue, statisticQueue);
-        AConsumer voidConsumer = new VoidConsumer(statisticQueue);
+        List<BlockingQueue<Container<StatisticGood>>> statisticQs = new ArrayList();
+        AFactory statisticsFactory = new StatisticFactory(producerQ, statisticQs);
+
+        NelsonRule nelsonRules = new NelsonRule();
+        List<BlockingQueue<Container<NelsonRuleGood>>> nelsonRuleQs = new ArrayList();
+        List<NelsonRuleFactory> nelsonRuleFactories = new ArrayList();
+        nelsonRules.rules.forEach((rule) ->
+        {
+            BlockingQueue<Container<StatisticGood>> statisticQ = new LinkedBlockingQueue();
+            statisticQs.add(statisticQ);
+
+            BlockingQueue<Container<NelsonRuleGood>> nelsonRuleQ = new LinkedBlockingQueue();
+            nelsonRuleQs.add(nelsonRuleQ);
+
+            nelsonRuleFactories.add(new NelsonRuleFactory(rule, statisticQ, nelsonRuleQ));
+        });
+
+        AConsumer consumer = new NelsonRuleConsumer(nelsonRuleQs);
 
         producer.start();
-        factory.start();
-        voidConsumer.start();
+        statisticsFactory.start();
+        nelsonRuleFactories.forEach((factory) ->
+        {
+            factory.start();
+        });
+        consumer.start();
     }
 }
