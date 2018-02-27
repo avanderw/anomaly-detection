@@ -1,18 +1,18 @@
-package net.avdw.anomoly.detection.nelsonrule;
+package net.avdw.anomolydetection.nelsonrule;
 
-import net.avdw.anomalydetection.nelsonrule.NelsonRule;
-import net.avdw.anomalydetection.nelsonrule.Rule5;
+import net.avdw.anomalydetection.nelsonrule.Rule4;
 import java.util.Arrays;
+import net.avdw.anomalydetection.nelsonrule.NelsonRule;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
 
-public class Rule5Test
+public class Rule4Test
 {
 
-    public Rule5Test()
+    public Rule4Test()
     {
         Configurator.currentConfig()
                 .formatPattern("{date:yyyy-MM-dd HH:mm:ss} {method}(): {message}")
@@ -24,17 +24,15 @@ public class Rule5Test
     public void testCompute()
     {
         DescriptiveStatistics stats = new DescriptiveStatistics();
-        NelsonRule.IRule rule = new Rule5();
+        NelsonRule.IRule rule = new Rule4();
         for (Double value : Arrays.asList(13., 14., 13., 14., 13., 15., 12., 14., 13., 20., 19., 20., 19., 20., 19., 20., 19., 20.))
         {
             stats.addValue(value);
             rule.compute(stats.getMean(), stats.getStandardDeviation(), value);
         }
 
-        rule.compute(stats.getMean(), stats.getStandardDeviation(), 32.5);
-        assertTrue(rule.compute(stats.getMean(), stats.getStandardDeviation(), 32.5));
-        assertTrue(rule.compute(stats.getMean(), stats.getStandardDeviation(), 1.5));
-        assertFalse(rule.compute(stats.getMean(), stats.getStandardDeviation(), 16.5));
+        assertTrue(rule.compute(stats.getMean(), stats.getStandardDeviation(), 11.));
+        assertFalse(rule.compute(stats.getMean(), stats.getStandardDeviation(), 9.));
     }
 
 }

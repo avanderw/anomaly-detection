@@ -4,15 +4,16 @@ import net.avdw.economy.api.AFactory;
 import java.util.concurrent.BlockingQueue;
 import net.avdw.anomalydetection.nelsonrule.NelsonRule;
 import net.avdw.anomalydetection.nelsonrule.NelsonRule.IRule;
-import net.avdw.economy.api.Container;
 import org.pmw.tinylog.Logger;
 
 class NelsonRuleFactory extends AFactory<StatisticGood, NelsonRuleGood>
 {
+
     StatisticGood statisticGood;
+
     IRule rule;
 
-    NelsonRuleFactory(NelsonRule.IRule rule, BlockingQueue<Container<StatisticGood>> input, BlockingQueue<Container<NelsonRuleGood>>... outputs)
+    NelsonRuleFactory(NelsonRule.IRule rule, BlockingQueue<StatisticGood> input, BlockingQueue<NelsonRuleGood>... outputs)
     {
         super(input, outputs);
         this.rule = rule;

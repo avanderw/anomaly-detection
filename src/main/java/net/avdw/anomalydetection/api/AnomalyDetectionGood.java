@@ -1,5 +1,7 @@
 package net.avdw.anomalydetection.api;
 
-public interface AnomalyDetectionGood {
+import net.avdw.economy.api.AGood;
+
+public class AnomalyDetectionGood implements AGood {
 
 }

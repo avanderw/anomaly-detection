@@ -1,11 +1,12 @@
 package net.avdw.anomalydetection;
 
-import net.avdw.economy.api.ASupplier;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
+import net.avdw.anomalydetection.api.AnomalyDetectionResource;
+import net.avdw.economy.api.ASupplier;
 import org.pmw.tinylog.Logger;
 
- class RandomSupplier extends ASupplier<Double>
+ class RandomSupplier extends ASupplier<AnomalyDetectionResource>
 {
 
     public RandomSupplier(BlockingQueue output)
@@ -14,7 +15,7 @@ import org.pmw.tinylog.Logger;
     }
 
     @Override
-    public Double produce()
+    public AnomalyDetectionResource produce()
     {
         Logger.debug("");
         try
@@ -25,7 +26,9 @@ import org.pmw.tinylog.Logger;
             Logger.warn(ex);
         }
 
-        return Math.random();
+        AnomalyDetectionResource resource = new AnomalyDetectionResource();
+        resource.value = Math.random();
+        return resource;
     }
 
 }

@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelsonrule;
+package net.avdw.anomolydetection.nelsonrule;
 
 import net.avdw.anomalydetection.nelsonrule.Rule6;
 import java.util.Arrays;

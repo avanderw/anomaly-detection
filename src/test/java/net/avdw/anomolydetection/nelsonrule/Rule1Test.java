@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelsonrule;
+package net.avdw.anomolydetection.nelsonrule;
 
 import net.avdw.anomalydetection.nelsonrule.Rule1;
 import java.util.Arrays;
@@ -15,8 +15,8 @@ public class Rule1Test
     public Rule1Test()
     {
         Configurator.currentConfig()
-                .formatPattern("{date:yyyy-MM-dd HH:mm:ss} {method}(): {message}")
-                .level(Level.TRACE)
+                .formatPattern("{date:yyyy-MM-dd HH:mm:ss} [{thread}] {method}(): {message}")
+                .level(Level.DEBUG)
                 .activate();
     }
 

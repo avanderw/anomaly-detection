@@ -1,7 +1,10 @@
 package net.avdw.anomalydetection;
 
- class NelsonRuleGood
+import net.avdw.economy.api.AGood;
+
+class NelsonRuleGood implements AGood
 {
+
     Boolean failed;
     String rule;
     String description;

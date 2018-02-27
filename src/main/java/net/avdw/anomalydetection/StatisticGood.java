@@ -1,6 +1,10 @@
 package net.avdw.anomalydetection;
 
-class StatisticGood {
+import net.avdw.economy.api.AGood;
+
+class StatisticGood implements AGood
+{
+
     Double mean;
     Double stddev;
     Double value;
