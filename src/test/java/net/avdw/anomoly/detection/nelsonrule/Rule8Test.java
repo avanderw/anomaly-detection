@@ -1,8 +1,8 @@
 package net.avdw.anomoly.detection.nelsonrule;
 
-import net.avdw.anomolydetection.nelsonrule.Rule8;
+import net.avdw.anomalydetection.nelsonrule.Rule8;
 import java.util.Arrays;
-import net.avdw.anomolydetection.nelsonrule.NelsonRule;
+import net.avdw.anomalydetection.nelsonrule.NelsonRule;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package net.avdw.anomolydetection;
+package net.avdw.anomalydetection;
 
 import net.avdw.economy.api.ASupplier;
 import java.util.concurrent.BlockingQueue;

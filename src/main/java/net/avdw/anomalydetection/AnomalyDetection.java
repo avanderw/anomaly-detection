@@ -1,6 +1,6 @@
-package net.avdw.anomolydetection;
+package net.avdw.anomalydetection;
 
-import net.avdw.anomolydetection.nelsonrule.NelsonRule;
+import net.avdw.anomalydetection.nelsonrule.NelsonRule;
 import net.avdw.economy.api.AConsumer;
 import net.avdw.economy.api.AFactory;
 import net.avdw.economy.api.ASupplier;
