@@ -6,7 +6,7 @@ import net.avdw.economy.api.AConsumer;
 import net.avdw.economy.api.Container;
 import org.pmw.tinylog.Logger;
 
-public class NelsonRuleConsumer extends AConsumer<NelsonRuleGood> {
+ class NelsonRuleConsumer extends AConsumer<NelsonRuleGood> {
 
     public NelsonRuleConsumer(List<BlockingQueue<Container<NelsonRuleGood>>> inputs)
     {

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import net.avdw.anomalydetection.api.AnomalyDetectionGood;
+import net.avdw.anomalydetection.api.AnomalyDetectionResource;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
 
@@ -20,6 +22,11 @@ https://en.wikipedia.org/wiki/Nelson_rules
  */
 public class AnomalyDetection
 {
+
+    public AnomalyDetection(BlockingQueue<Container<AnomalyDetectionResource>> inQ, BlockingQueue<Container<AnomalyDetectionGood>> outQ)
+    {
+        AnomalyDetectionFactory anomalyDetectionFactory = new AnomalyDetectionFactory(inQ, outQ);
+    }
 
     public static void main(String[] args)
     {

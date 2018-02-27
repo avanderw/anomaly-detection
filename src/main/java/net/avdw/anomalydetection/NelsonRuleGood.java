@@ -1,6 +1,6 @@
 package net.avdw.anomalydetection;
 
-public class NelsonRuleGood
+ class NelsonRuleGood
 {
     Boolean failed;
     String rule;

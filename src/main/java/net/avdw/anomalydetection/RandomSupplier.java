@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import org.pmw.tinylog.Logger;
 
-public class RandomSupplier extends ASupplier<Double>
+ class RandomSupplier extends ASupplier<Double>
 {
 
     public RandomSupplier(BlockingQueue output)

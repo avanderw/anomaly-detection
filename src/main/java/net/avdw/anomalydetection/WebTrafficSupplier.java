@@ -2,7 +2,8 @@ package net.avdw.anomalydetection;
 
 import net.avdw.economy.api.ASupplier;
 
-public class WebTrafficSupplier extends ASupplier<WebTrafficGood> {
+class WebTrafficSupplier extends ASupplier<WebTrafficGood>
+{
 
     @Override
     public WebTrafficGood produce()

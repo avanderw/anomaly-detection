@@ -1,5 +1,5 @@
 package net.avdw.anomalydetection;
 
-public class WebTrafficGood {
+ class WebTrafficGood {
 
 }
