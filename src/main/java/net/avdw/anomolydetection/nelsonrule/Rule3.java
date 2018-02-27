@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelsonrule;
+package net.avdw.anomolydetection.nelsonrule;
 
 import java.util.Deque;
 import java.util.LinkedList;

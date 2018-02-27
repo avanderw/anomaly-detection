@@ -1,14 +1,14 @@
-package net.avdw.anomoly.detection;
+package net.avdw.anomolydetection;
 
+import net.avdw.anomolydetection.nelsonrule.NelsonRule;
 import net.avdw.economy.api.AConsumer;
 import net.avdw.economy.api.AFactory;
 import net.avdw.economy.api.ASupplier;
+import net.avdw.economy.api.Container;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import net.avdw.anomoly.detection.nelsonrule.NelsonRule;
-import net.avdw.economy.api.Container;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
 
@@ -18,7 +18,7 @@ http://odds.cs.stonybrook.edu/
 https://anomaly.io/anomaly-detection-moving-median-decomposition/
 https://en.wikipedia.org/wiki/Nelson_rules
  */
-public class Detection
+public class AnomalyDetection
 {
 
     public static void main(String[] args)

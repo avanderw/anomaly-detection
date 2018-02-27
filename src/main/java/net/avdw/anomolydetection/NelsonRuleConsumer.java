@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection;
+package net.avdw.anomolydetection;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection;
+package net.avdw.anomolydetection;
 
 import net.avdw.economy.api.AFactory;
 import java.util.List;

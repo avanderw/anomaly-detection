@@ -1,9 +1,9 @@
-package net.avdw.anomoly.detection;
+package net.avdw.anomolydetection;
 
 import net.avdw.economy.api.AFactory;
 import java.util.concurrent.BlockingQueue;
-import net.avdw.anomoly.detection.nelsonrule.NelsonRule;
-import net.avdw.anomoly.detection.nelsonrule.NelsonRule.IRule;
+import net.avdw.anomolydetection.nelsonrule.NelsonRule;
+import net.avdw.anomolydetection.nelsonrule.NelsonRule.IRule;
 import net.avdw.economy.api.Container;
 import org.pmw.tinylog.Logger;
 

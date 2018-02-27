@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection.nelsonrule;
+package net.avdw.anomolydetection.nelsonrule;
 
 /**
  * One point is more than 3 standard deviations from the mean. Problem

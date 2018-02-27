@@ -1,4 +1,4 @@
-package net.avdw.anomoly.detection;
+package net.avdw.anomolydetection;
 
 class StatisticGood {
     Double mean;

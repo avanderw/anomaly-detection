@@ -1,5 +1,7 @@
 package net.avdw.anomoly.detection.nelsonrule;
 
+import net.avdw.anomolydetection.nelsonrule.NelsonRule;
+import net.avdw.anomolydetection.nelsonrule.Rule5;
 import java.util.Arrays;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.junit.Test;
