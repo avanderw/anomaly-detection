@@ -51,4 +51,13 @@ public class AnomalyDetection
         });
     }
 
+    public void stop()
+    {
+        statisticFactory.stop();
+        nelsonRuleFactories.forEach((nelsonRuleFactory) ->
+        {
+            nelsonRuleFactory.stop();
+        });
+    }
+
 }
